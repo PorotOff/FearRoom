@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Flashlight
   ItemIcon: {fileID: 21300000, guid: b0d490b149dd86f4fadc240bb6275800, type: 3}
-  ItemPrefab: {fileID: 7678906488249142381, guid: 2daa0c5ba583e514b8dfdbe2b2078dc1, type: 3}
+  ItemPrefab: {fileID: 5606269855768531997, guid: c59ca55aa57a97e4a86c7f168f17d893, type: 3}
+  SphereColliderRadius: 1.5
+  IsSphereColliderTrigger: 1

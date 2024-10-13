@@ -49,7 +49,7 @@ public class SelectItemToHand : MonoBehaviour
             Select(lastPlacedItemNumber);
         }
     }
-
+    
     private void ChangeObjectLayer(GameObject currentObject, int layer)
     {
         currentObject.layer = layer;
@@ -58,5 +58,5 @@ public class SelectItemToHand : MonoBehaviour
         {
             ChangeObjectLayer(obj.gameObject, layer);
         }
-    }    
+    }
 }

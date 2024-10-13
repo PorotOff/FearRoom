@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 3626319572576839765}
   - component: {fileID: 1509327023779818770}
   - component: {fileID: 3885797433514993857}
+  - component: {fileID: 8969085762052067282}
   m_Layer: 0
   m_Name: Main key
   m_TagString: Untagged
@@ -179,6 +180,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickableItemParameters: {fileID: 11400000, guid: 26ccc57f59dc1c647914beb515b3c02c, type: 2}
+--- !u!135 &8969085762052067282
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5084554341034104874}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5168211136357840947
 GameObject:
   m_ObjectHideFlags: 0

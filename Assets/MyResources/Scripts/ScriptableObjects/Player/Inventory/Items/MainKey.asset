@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Main key
   ItemIcon: {fileID: 21300000, guid: 144a8b7aa335834419f5245b1e2da97e, type: 3}
-  ItemPrefab: {fileID: 5084554341034104874, guid: 063b372f0d20a3742b53a78b65d079b9, type: 3}
+  ItemPrefab: {fileID: 864067543876678067, guid: 8f4d9f33dbe0e6043bb434851da019ea, type: 3}
+  SphereColliderRadius: 1.5
+  IsSphereColliderTrigger: 1

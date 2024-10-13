@@ -1162,9 +1162,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6995886690404923575, guid: 2daa0c5ba583e514b8dfdbe2b2078dc1, type: 3}
+      propertyPath: sphereColliderRadius
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7678906488249142381, guid: 2daa0c5ba583e514b8dfdbe2b2078dc1, type: 3}
       propertyPath: m_Name
       value: FlashLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017717896823206908, guid: 2daa0c5ba583e514b8dfdbe2b2078dc1, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1189,9 +1197,9 @@ GameObject:
   - component: {fileID: 745693157}
   - component: {fileID: 745693156}
   - component: {fileID: 745693155}
-  - component: {fileID: 745693158}
   - component: {fileID: 745693160}
   - component: {fileID: 745693159}
+  - component: {fileID: 745693161}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1383,19 +1391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6d911787dce3f4c8857c79c125cc33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &745693158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745693146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea3238a5bf4a1c4b82ec8789212a75d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRayLenght: 50
 --- !u!114 &745693159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1408,6 +1403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698a059dccf440d4696fb4ee459b248b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupDelay: 1
 --- !u!114 &745693160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1425,6 +1421,19 @@ MonoBehaviour:
       m_Calls: []
   InventoryItems: []
   maxCapacity: 10
+--- !u!114 &745693161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745693146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca66ae8ee622976409d69edf2c1a4b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRayLenght: 10
 --- !u!1 &827629390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1647,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3885797433514993857, guid: 063b372f0d20a3742b53a78b65d079b9, type: 3}
+      propertyPath: sphereColliderRadius
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5084554341034104874, guid: 063b372f0d20a3742b53a78b65d079b9, type: 3}
       propertyPath: m_Name
       value: Main key
@@ -1657,6 +1670,10 @@ PrefabInstance:
     - target: {fileID: 7839201994971752539, guid: 063b372f0d20a3742b53a78b65d079b9, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969085762052067282, guid: 063b372f0d20a3742b53a78b65d079b9, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

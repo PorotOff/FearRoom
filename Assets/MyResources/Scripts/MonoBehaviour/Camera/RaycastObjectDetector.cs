@@ -1,41 +1,28 @@
 using UnityEngine;
 
-public class RaycastObjectDetector : MonoBehaviour, IDetectedObject
+public class RaycastObjectDetector : MonoBehaviour, IObjectDetector
 {
-    private Camera playerCamera;
-    [SerializeField] private float detectionRayLenght = 50f;
+    private CameraRayProvider rayProvider;
+    private float detectionRayLenght;
 
-    private Ray cameraRay { get; set; }
-    private RaycastHit hit;
-
-    private void Awake()
+    public RaycastObjectDetector(CameraRayProvider rayProvider, float detectionRayLenght)
     {
-        playerCamera = Camera.main;
-    }
-
-    private void Update()
-    {
-        Detect();
-
-        DrawDebugRay();
+        this.rayProvider = rayProvider;
+        this.detectionRayLenght = detectionRayLenght;
     }
 
     public void Detect()
     {
-        cameraRay = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f));
+        Ray cameraRay = rayProvider.GetRay();
 
-        if (Physics.Raycast(cameraRay, out hit, detectionRayLenght, ~0, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(cameraRay, out RaycastHit hit, detectionRayLenght, ~0, QueryTriggerInteraction.Collide))
         {
-            var detectedObject = hit.collider.GetComponent<IDetectable>();
+            IDetectable detectedObject = hit.collider.GetComponent<IDetectable>();
+            
             if (detectedObject != null)
             {
                 detectedObject.OnDetected();
             }
         }
-    }
-
-    private void DrawDebugRay()
-    {
-        Debug.DrawRay(cameraRay.origin, cameraRay.direction * detectionRayLenght, Color.red);
     }
 }
