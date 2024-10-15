@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Analytics;
 
 public class MouseInputManager : MonoBehaviour
 {

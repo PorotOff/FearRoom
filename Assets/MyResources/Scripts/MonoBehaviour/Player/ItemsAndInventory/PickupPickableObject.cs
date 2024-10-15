@@ -1,9 +1,8 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupPickableObject : MonoBehaviour
+public class PickupPickableObject : MonoBehaviour, IInteractable
 {
     private List<PickableObject> pickableObjects = new List<PickableObject>();
 
@@ -11,6 +10,8 @@ public class PickupPickableObject : MonoBehaviour
     private Coroutine pickupCoroutine;
 
     private Inventory inventory;
+
+    private bool isObjectPickingUp = false;
 
     private void Awake()
     {
@@ -50,14 +51,26 @@ public class PickupPickableObject : MonoBehaviour
         }
     }
 
-    public void StartPickup()
+    public void Interact()
+    {
+        if (!isObjectPickingUp)
+        {
+            StartPickup();
+        }
+        else
+        {
+            StopPickup();
+        }
+    }
+
+    private void StartPickup()
     {
         if (pickableObjects.Count > 0)
         {
             pickupCoroutine = StartCoroutine(Pickup());
         }
     }
-    public void StopPickup()
+    private void StopPickup()
     {
         StopCoroutine(pickupCoroutine);
     }

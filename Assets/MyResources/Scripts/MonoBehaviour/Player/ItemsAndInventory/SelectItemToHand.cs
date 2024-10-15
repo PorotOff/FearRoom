@@ -16,12 +16,12 @@ public class SelectItemToHand : MonoBehaviour
     private void OnEnable()
     {
         inventory.OnItemPlacedInInventory.AddListener(ImmediatlySelect);
-        KeyboardInputManager.OnItemSelected.AddListener(Select);
+        FromInventoryItemSelector.OnItemSelected.AddListener(Select);
     }
     private void OnDisable()
     {
         inventory.OnItemPlacedInInventory.RemoveListener(ImmediatlySelect);
-        KeyboardInputManager.OnItemSelected.RemoveListener(Select);
+        FromInventoryItemSelector.OnItemSelected.RemoveListener(Select);
     }
 
     private void Select(int index)
