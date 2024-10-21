@@ -53,39 +53,6 @@ public class PickupPickableObject : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (!isObjectPickingUp)
-        {
-            StartPickup();
-        }
-        else
-        {
-            StopPickup();
-        }
-    }
-
-    private void StartPickup()
-    {
-        if (pickableObjects.Count > 0)
-        {
-            pickupCoroutine = StartCoroutine(Pickup());
-        }
-    }
-    private void StopPickup()
-    {
-        StopCoroutine(pickupCoroutine);
-    }
-
-    private IEnumerator Pickup()
-    {
-        for (int i = 0; i < pickableObjects.Count; i++)
-        {
-            yield return new WaitForSeconds(pickupDelay);
-
-            inventory.AddItem(pickableObjects[i].pickableItemParameters);
-
-            pickableObjects[i].DestroyOnPickedUp();
-
-            pickableObjects.Remove(pickableObjects[i]);
-        }
+        
     }
 }

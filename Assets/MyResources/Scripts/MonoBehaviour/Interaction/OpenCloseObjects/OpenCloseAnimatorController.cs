@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class OpenCloseAnimatorController : MonoBehaviour, IDetectable, IInteractable, IOpenClosable
+public class OpenCloseAnimatorController : MonoBehaviour, IInteractable
 {
     private Animator animator;
 
@@ -11,28 +11,25 @@ public class OpenCloseAnimatorController : MonoBehaviour, IDetectable, IInteract
         animator = GetComponent<Animator>();
     }
 
-    public void OnDetected()
-    {
-        
-    }
-
     public void Interact()
     {
         if (!isOpened)
         {
             Open();
+            isOpened = true;
         }
         else
         {
             Close();
+            isOpened = false;
         }
     }
 
-    public void Open()
+    private void Open()
     {
         animator.SetBool("IsOpen", true);
     }
-    public void Close()
+    private void Close()
     {
         animator.SetBool("IsOpen", false);
     }

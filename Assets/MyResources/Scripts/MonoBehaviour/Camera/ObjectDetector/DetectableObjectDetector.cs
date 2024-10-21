@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectableObjectDetector : ObjectDetector
+public class DetectableObjectDetector : RaycastObjectDetector
 {
     protected Dictionary<Collider, IDetectable> cachedDetectedObjects = new Dictionary<Collider, IDetectable>();
-
-    public DetectableObjectDetector(CameraRayProvider cameraRayProvider, float detectionRayLenght)
-        : base(cameraRayProvider, detectionRayLenght) { }
 
     protected override void ProcessHit(Collider hittedCollider)
     {

@@ -1,29 +1,42 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InteractionHandler : MonoBehaviour
 {
-    private IInteractable cachedInteractableObject;
+    public UnityEvent OnObjectCanInteract = new UnityEvent();
+
+    [SerializeField] private float fillingRate = 1f;
+    private PushingTimer pushingTimer;
+
+    private void Awake()
+    {
+        pushingTimer = new PushingTimer(fillingRate);
+    }
+
+    private void OnEnable()
+    {
+        pushingTimer.OnTimerFilled.AddListener(CallInteractionEvent);
+    }
+    private void OnDisable()
+    {
+        pushingTimer.OnTimerFilled.RemoveListener(CallInteractionEvent);
+    }
 
     private void Update()
     {
-        Interact();
+        PushingEHandler();
     }
 
-    public void HandleInteraction(IInteractable interactable)
+    private void PushingEHandler()
     {
-        if (interactable != null)
+        if (Input.GetKey(KeyCode.E))
         {
-            cachedInteractableObject = interactable;
+            pushingTimer.AddingTime();
         }
-
-        Interact();
     }
 
-    private void Interact()
+    private void CallInteractionEvent()
     {
-        if (cachedInteractableObject != null && Input.GetKey(KeyCode.E))
-        {
-            cachedInteractableObject.Interact();
-        }
+        OnObjectCanInteract?.Invoke();
     }
 }
