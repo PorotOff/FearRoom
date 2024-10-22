@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObjectDetector : MonoBehaviour
 {
+    public static UnityEvent<GameObject> OnAnyObjectDetected = new UnityEvent<GameObject>();
+
     private CameraRayProvider rayProvider;
     [SerializeField] private float detetctionRayLenght;
     private DebugRayDrawer debugRayDrawer;
@@ -29,20 +32,9 @@ public class ObjectDetector : MonoBehaviour
         {
             Collider hittedCollider = hit.collider;
 
-            if (cachedDetectedObjects.TryGetValue(hittedCollider, out IDetectable detectedDetectableObject))
-            {
-                detectedDetectableObject.OnDetected(hittedCollider.gameObject);
-            }
-            else
-            {
-                detectedDetectableObject = hittedCollider.GetComponent<IDetectable>();
+            OnAnyObjectDetected?.Invoke(hittedCollider.gameObject);
 
-                if (detectedDetectableObject != null)
-                {
-                    detectedDetectableObject.OnDetected(hittedCollider.gameObject);
-                    cachedDetectedObjects[hittedCollider] = detectedDetectableObject;
-                }
-            }
+            Debug.Log($"Object detected: {hittedCollider.gameObject.name}");
         }
 
         debugRayDrawer.DebugDrawRay(cameraRay, detetctionRayLenght, Color.green);

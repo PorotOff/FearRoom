@@ -8,14 +8,10 @@ public class HideFromPlayer : MonoBehaviour, IDetectable
     {
         animator = GetComponent<Animator>();
     }
-
-    public void OnDetected(GameObject detectedObject)
-    {
-        StartHiddingAnimation();
-    }
+    
     public void OnDetected()
     {
-        throw new System.NotImplementedException();
+        StartHiddingAnimation();
     }
 
     private void StartHiddingAnimation()

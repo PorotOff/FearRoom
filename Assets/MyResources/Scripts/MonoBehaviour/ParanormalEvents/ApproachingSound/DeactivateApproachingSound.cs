@@ -16,10 +16,6 @@ public class DeactivateApproachingSound : MonoBehaviour, IDetectable
     {
         Deactivate();
     }
-    public void OnDetected(GameObject detectedObject)
-    {
-        throw new System.NotImplementedException();
-    }
 
     private void Deactivate()
     {

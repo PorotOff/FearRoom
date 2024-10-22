@@ -11,18 +11,22 @@ public class PlaceObjectToInventory : MonoBehaviour
 
     private void OnEnable()
     {
-        NotifyPickableObjectDetected.OnPickableObjectDetected.AddListener(PlaceToInventory);
+        PushEToInteract.OnPlayerInteractedWith.AddListener(PlaceToInventory);
     }
     private void OnDisable()
     {
-        NotifyPickableObjectDetected.OnPickableObjectDetected.RemoveListener(PlaceToInventory);
+        PushEToInteract.OnPlayerInteractedWith.RemoveListener(PlaceToInventory);
     }
 
-    private void PlaceToInventory(PickableItem detectedPickableItem)
+    private void PlaceToInventory(GameObject interactedObject)
     {
-        if (Input.GetKey(KeyCode.E))
+        PickableObject pickedObject = interactedObject.GetComponent<PickableObject>();
+
+        if (pickedObject != null)
         {
-            inventory.AddItem(detectedPickableItem);
+            inventory.AddItem(pickedObject.pickableItemParameters);
+
+            pickedObject.DestroyOnPickedUp();
         }
     }
 }
