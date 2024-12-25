@@ -1,4 +1,0 @@
-repository "Fear room@ZAREVO@cloud"
-  path "/"
-    br "/main"
-    co "/main"

@@ -1,31 +1,31 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MoveComponent
 {
-    private Rigidbody playerRigidbody;
-
-    [SerializeField] private float walkSpeed = 5f;
-    [SerializeField] private float runSpeed = 10f;
-
-    [SerializeField] private float jumpForce = 6f;
-
+    private float horizontalInput;
+    private float verticalInput;
+    private float speed = 5f;
+    
     private GroundChecker groundChecker;
 
-    private void Awake()
-    {
-        playerRigidbody = GetComponent<Rigidbody>();
+    private Rigidbody playerRigidbody;
+    private Transform playerTransform;
 
-        groundChecker = GetComponent<GroundChecker>();
+    public PlayerMovement(GameObject currentObject, float horizontalInput, float verticalInput, float speed)
+    {
+        playerRigidbody = currentObject.GetComponent<Rigidbody>();
+        playerTransform = currentObject.GetComponent<Transform>();
+
+        this.horizontalInput = horizontalInput;
+        this.verticalInput = verticalInput;
+        this.speed = speed;
     }
 
-    public void Move(float horizontalInput, float verticalInput, bool isShiftPressed)
+    public override void Move()
     {
-        Vector3 newMovementDirection = transform.forward * verticalInput + transform.right * horizontalInput;
-        newMovementDirection.Normalize();
-
         Vector3 currentVelocity = playerRigidbody.linearVelocity;
-        Vector3 newVelocity = newMovementDirection * (isShiftPressed ? runSpeed : walkSpeed);
+        Vector3 newVelocity = GetDirection() * GetSpeed();
         newVelocity.y = currentVelocity.y;
 
         if (!groundChecker.IsGrounded)
@@ -36,13 +36,16 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody.linearVelocity = newVelocity;
     }
 
-    public void Jump()
+    protected override Vector3 GetDirection()
     {
-        if (groundChecker.IsGrounded)
-        {
-            playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        Vector3 newMovementDirection = playerTransform.forward * verticalInput + playerTransform.right * horizontalInput;
+        newMovementDirection.Normalize();
 
-            groundChecker.IsGrounded = false;
-        }
+        return newMovementDirection;
+    }
+
+    protected override float GetSpeed()
+    {
+        return speed;
     }
 }
